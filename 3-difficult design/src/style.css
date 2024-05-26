@@ -1,0 +1,1141 @@
+@layer base {
+  :root {
+    --base-size: 1rem;
+    --scale: 1.25;
+    --h1: calc(var(--h2) * var(--scale));
+    --h2: calc(var(--h3) * var(--scale));
+    --h3: calc(var(--h4) * var(--scale));
+    --h4: calc(var(--h5) * var(--scale));
+    --h5: calc(var(--h6) * var(--scale));
+    --h6: var(--base-size);
+
+    /* colors */
+    --lime: #a4ffa2;
+    --magenta: #f47dda;
+    --magenta50: #f47dda80;
+    --white: #ffffff;
+    --tan: #cec5b4;
+    --teal: #2e6d81;
+    --cyan: #7de6f4;
+    --black: #050d14;
+    --shadow: #050d1480;
+    --gradient: linear-gradient(180deg, var(--black) 0%, var(--teal) 100%);
+    --grey: #adb0c0;
+
+    /* fonts */
+    --sans-serif: "Poppins", sans-serif;
+    --serif: "Cormorant Garamond", serif;
+    --cursive: "Pacifico", cursive;
+  }
+  html {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cyan) var(--black);
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  body {
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.75;
+    background: var(--gradient) no-repeat fixed;
+    color: var(--white);
+    font-size: var(--base-size);
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 3rem 0 1.38rem;
+    font-weight: 300;
+    line-height: 1.3;
+  }
+
+  h1,
+  .h1 {
+    font-size: var(--h1);
+  }
+
+  h2,
+  .h2 {
+    font-size: var(--h2);
+  }
+
+  h3,
+  .h3 {
+    font-size: var(--h3);
+  }
+
+  h4,
+  .h4 {
+    font-size: var(--h4);
+  }
+
+  h5,
+  .h5 {
+    font-size: var(--h5);
+  }
+
+  h6,
+  .h6 {
+    font-size: var(--h6);
+  }
+  a {
+    color: var(--lime);
+  }
+  a:hover {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+  img {
+    width: 100%;
+    max-width: 100%;
+  }
+  main {
+    margin-bottom: 4rem;
+  }
+  figure {
+    margin: 0;
+    padding: 0;
+  }
+  blockquote {
+    margin: 0;
+    padding: 0;
+  }
+  cite {
+    font-style: normal;
+    display: block;
+    margin-top: -3px;
+  }
+  footer {
+    margin-top: 5rem;
+    text-transform: uppercase;
+  }
+  .wrapper {
+    /* width: 80%; */
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .button-primary {
+    color: var(--magenta);
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    text-decoration: none;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--magenta);
+    border-radius: 10px;
+    text-align: center;
+    white-space: nowrap;
+    width: 170px;
+  }
+  .button-primary:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+  }
+
+  .button-fullwidth {
+    /* Don't thnk we need it */
+    /* display: block;  */
+    width: 100%;
+    margin: 2rem auto;
+    border-radius: 0;
+  }
+
+  @media (min-width: 800px) {
+    .wrapper {
+      max-width: 800px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .wrapper {
+      max-width: 1440px;
+    }
+  }
+}
+
+/* /////  NAV SECTION ///// */
+@layer navbar {
+  /* This layer is written based on Desktop first and Mobile last layout. So css code outside of media-query targets Desktop layout. */
+  #top {
+    /* border: 1px solid blue; */
+    padding: 1rem;
+    margin: 0 auto 4rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    /* gap: 1.5rem; */
+  }
+
+  #top h1 img {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  #top a {
+    transition: transform 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+
+  #top h1 a {
+    font-size: var(--h3);
+    color: var(--white);
+    font-family: var(--cursive);
+  }
+  #top h1 a:hover {
+    color: var(--magenta);
+  }
+
+  #top nav li {
+    list-style: none;
+    display: inline-block;
+    margin-left: 1rem;
+  }
+
+  #top nav a {
+    color: var(--white);
+    font-family: var(--cursive);
+    padding: 0.25em 0;
+    line-height: 1.3;
+  }
+
+  /* #top a {
+    display: inline-block;
+    color: orange;
+    transition: transform 0.3s, color 0.3s, box-shadow 0.3s;
+  } */
+
+  #top > nav a:focus,
+  #top > nav a:hover {
+    color: var(--cyan);
+    transform: scale(1.2);
+  }
+
+  @media (max-width: 800px) {
+    /* ////// LAYOUT VIEWPORT LESS THAN OR MIN THAN 800PX USE BELOW CSS PROPERTIES ////// */
+    #mainMenuOpen:after {
+      /* ////// this is hamburger button ////// */
+      content: "\2630";
+    }
+
+    #mainMenuOpen {
+      display: block;
+      font-size: 2em;
+      line-height: 1;
+      border: 0;
+      background: transparent;
+      color: var(--magenta);
+    }
+
+    #mainMenuOpen + nav {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      justify-content: center;
+      opacity: 1;
+      background: var(--black);
+      /* transition: property duration timing-function delay; */
+      transition: left 0.3s 0.3s, opacity 0.3s;
+    }
+
+    #mainMenuOpen:focus + nav,
+    #mainMenuOpen + nav:focus-within {
+      left: 0;
+      opacity: 0.9;
+      transition: left 0s, opacity 0.3s;
+      /* only display nav bar when clicked at top of z-index */
+      z-index: 10;
+    }
+
+    #mainMenuOpen + nav ul {
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: flex-start;
+      position: relative;
+      /* below top property gives the look and feel of bringin our nav bar from top:-50vh to top:0 (to it's original position)  */
+      /* top: -60vh; */
+      min-width: 50vw;
+      max-width: 100vw;
+      margin: auto;
+      overflow: hidden;
+      transition: top 0.5s;
+    }
+
+    #mainMenuOpen:focus + nav ul,
+    #mainMenuOpen + nav:focus-within ul {
+      top: 0;
+    }
+
+    #mainMenuOpen + nav li {
+      width: 50%;
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    #mainMenuOpen + nav ul:after {
+      /* border: 1px solid green; */
+      content: "\1F5D9";
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 2rem;
+      line-height: 1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hide-magenta-logo-sm {
+      display: none;
+    }
+  }
+}
+
+/* /////  AUDIO SECTION ///// */
+@layer audio-player {
+  .cover {
+    max-width: 550px;
+    margin: 0 auto;
+  }
+
+  .cover img {
+    object-fit: cover;
+    outline: var(--cyan) solid 2px;
+  }
+
+  #audio-player-container button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+  button#mute-icon {
+    padding: 0.4rem 0 0.4rem 0.6rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  button#mute-icon path {
+    /* The 'path' selector targets the <path> element inside svg which is inside the button element with the id 'mute-icon'. */
+    stroke: var(--white);
+  }
+  button#play-icon {
+    background-color: var(--lime);
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+  }
+  button#play-icon path {
+    stroke: var(--black);
+  }
+  button#play-icon:hover {
+    background-color: var(--cyan);
+  }
+  #audio-player-container {
+    --seek-before-width: 0%;
+    --volume-before-width: 100%;
+    --buffered-width: 0%;
+    position: relative;
+    margin: 100px 2.5% auto 2.5%;
+    width: 100%;
+    height: 132px;
+    max-width: 500px;
+    /* background: #fff; */
+  }
+  #audio-player-container::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    left: -2px;
+    top: -2px;
+    /* background: linear-gradient(to left, #007db5, #ff8a00); */
+  }
+  p {
+    margin: 0;
+    /*     position: absolute; */
+    /*     top: -18px; */
+    /*     right: 5%; */
+    /*     padding: 0 5px; */
+    /*     margin: 0; */
+    /*     font-size: 28px; */
+    /*     background: #fff; */
+  }
+
+  .time {
+    font-size: var(--h5);
+
+    /* display: inline-block; */
+    /* width: 37px; */
+    /* margin: 28.5px 0 18.5px 0; */
+    /* float: left; */
+  }
+  #current-time.time {
+    /* Below we have used grid, in which this element act like grid child, hence we can use this property */
+    place-self: center start;
+  }
+  #duration.time {
+    /* Below we have used grid, in which this element act like grid child, hence we can use this property */
+    place-self: center end;
+  }
+  #audio-player-container output {
+    text-align: left;
+    font-size: var(--h5);
+
+    /* All default properties are below of forked player */
+    /* display: inline-block; */
+    /* width: 32px; */
+    /* text-align: center; */
+    /* font-size: 20px; */
+    /* margin: 10px 2.5% 0 5%; */
+    /* float: left; */
+    /* clear: left; */
+  }
+  #volume-slider {
+    width: 100%;
+    background-color: transparent;
+  }
+  #volume-slider::-webkit-slider-runnable-track {
+    background: rgba(0, 125, 181, 0.6);
+  }
+  #volume-slider::-moz-range-track {
+    background: rgba(0, 125, 181, 0.6);
+  }
+  #volume-slider::-ms-fill-upper {
+    background: rgba(0, 125, 181, 0.6);
+  }
+  #volume-slider::before {
+    width: var(--volume-before-width);
+  }
+
+  input[type="range"] {
+    /* It's a attribute type of selector, it actually mean select element which are of type input and contain attribute of type `type=range` */
+    background-color: transparent;
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    padding: 0;
+    height: 19px;
+    /* margin: 30px 2.5% 20px 2.5%; */
+    outline: none;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+
+    /* Use this belo background property to change color of slider */
+    background: linear-gradient(
+      to right,
+      rgba(0, 125, 181, 0.6) var(--buffered-width),
+      rgba(0, 125, 181, 0.2) var(--buffered-width)
+    );
+  }
+  input[type="range"]::before {
+    position: absolute;
+    content: "";
+    top: 8px;
+    left: 0;
+    width: var(--seek-before-width);
+    height: 3px;
+    background-color: var(--cyan);
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    position: relative;
+    -webkit-appearance: none;
+    box-sizing: content-box;
+    border: 1px solid #007db5;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    margin: -7px 0 0 0;
+  }
+  input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+    background: #007db5;
+  }
+  input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: linear-gradient(
+      to right,
+      rgba(0, 125, 181, 0.6) var(--buffered-width),
+      rgba(0, 125, 181, 0.2) var(--buffered-width)
+    );
+  }
+  input[type="range"]::-moz-range-progress {
+    background-color: #007db5;
+  }
+  input[type="range"]::-moz-focus-outer {
+    border: 0;
+  }
+  input[type="range"]::-moz-range-thumb {
+    box-sizing: content-box;
+    border: 1px solid #007db5;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  input[type="range"]:active::-moz-range-thumb {
+    transform: scale(1.2);
+    background: #007db5;
+  }
+  input[type="range"]::-ms-track {
+    width: 100%;
+    height: 3px;
+    cursor: pointer;
+    background: transparent;
+    border: solid transparent;
+    color: transparent;
+  }
+  input[type="range"]::-ms-fill-lower {
+    background-color: #007db5;
+  }
+  input[type="range"]::-ms-fill-upper {
+    background: linear-gradient(
+      to right,
+      rgba(0, 125, 181, 0.6) var(--buffered-width),
+      rgba(0, 125, 181, 0.2) var(--buffered-width)
+    );
+  }
+  input[type="range"]::-ms-thumb {
+    box-sizing: content-box;
+    border: 1px solid #007db5;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  input[type="range"]:active::-ms-thumb {
+    transform: scale(1.2);
+    background: #007db5;
+  }
+
+  .row1 {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+  }
+
+  .row1 > p {
+    font-family: var(--cursive);
+  }
+
+  .row1 p:first-child {
+    place-self: center start;
+  }
+
+  .row1 p:last-child {
+    place-self: center end;
+  }
+
+  .row2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .row2 span,
+  .row2 output {
+    font-family: var(--serif);
+    color: var(--white);
+    padding: 0.4rem;
+  }
+
+  .song-slider-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    place-items: center;
+  }
+
+  .vol-slider-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    place-items: center;
+    row-gap: 1rem;
+  }
+}
+
+@layer audio-player-album-cover-icons {
+  .album_icons_wrapper {
+    position: relative;
+  }
+  .icons_wrapper {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1.5rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+  }
+
+  img.album_icons {
+    outline: unset;
+    width: 2rem;
+  }
+
+  @media (min-width: 800px) {
+    .icons_wrapper {
+      flex-flow: row wrap;
+      top: -1rem;
+      right: 2rem;
+    }
+  }
+}
+
+/* /////  TRACKLIST SECTION ///// */
+@layer tracklist {
+  .track-list-section {
+    border: 1px solid var(--magenta);
+  }
+
+  .tracklist_button {
+    margin: 0 auto;
+    padding: 1rem 0;
+    display: block;
+    font-size: var(--h4);
+    font-family: var(--serif);
+    color: var(--magenta);
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    text-transform: uppercase;
+  }
+
+  .tracklist_button:focus-within,
+  .tracklist_button:hover {
+    color: var(--cyan);
+  }
+
+  .hide_table {
+    display: none;
+  }
+
+  .section__table {
+    max-width: 500px; /* it means, if view port > 500 then won't extend table width more than 500px*/
+    width: 100%; /* it means, if view port < 500 then take 100% width */
+    margin: 0 auto;
+    font-family: var(--cursive);
+
+    /*
+    helps remove default border space which by defualt not visible, but present. It was popular in 90s. 
+    Note: don't try to remove this border using border:none in table use below property;
+    */
+    border-collapse: collapse;
+  }
+
+  .section__table caption,
+  .section__table th {
+    /* here visibility means, only display caption to screen readers and not in normal view. */
+    visibility: collapse;
+  }
+
+  .section__table th,
+  .section__table td {
+    /* add padding space between each row data */
+    padding: 0.5rem;
+    /* border: 1px solid red; */
+  }
+
+  .section__table tr td:nth-child(2) {
+    /* move song no. and time in table to center */
+    text-align: left;
+  }
+  .section__table tr td {
+    /* move song names in table to left */
+    text-align: center;
+  }
+
+  .section__table th {
+    border-bottom: 2px solid var(--gray);
+  }
+  .section__table tr:nth-of-type(1) {
+    font-family: var(--sans-serif);
+    color: var(--tan);
+    border-bottom: 1px solid var(--gray);
+  }
+
+  /* Below selector means, look for each tr element and when you find one, look for td
+  type element and select the 3 child  */
+  .section__table tr:nth-of-type(1n + 2) > td:nth-child(3) {
+    /* Above complex selector can be replaced with below one
+    - it tell browser to select all LAST td element which are CHILD of parent (eg. tr) */
+    /* td:nth-last-of-type() {...} */
+    color: var(--magenta);
+    font-family: var(--serif);
+  }
+}
+
+@layer player-and-tracklist-layout {
+  @media (min-width: 800px) {
+    .main-grid {
+      display: grid;
+      grid-template-columns: 100px 500px;
+      max-width: 600px;
+      margin: 0 auto;
+      transition: all 0.7s ease;
+    }
+
+    .to-main-grid-add-extra-width {
+      grid-template-columns: 300px 500px;
+      max-width: 800px;
+    }
+    .cover {
+      order: 2;
+    }
+    .track-list-section {
+      height: 500px;
+      padding: 0;
+      margin: 0;
+      justify-self: end;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .tracklist_button {
+      font-weight: bold;
+      margin-top: 225px;
+      transform: rotate(90deg);
+      transition: all 1s
+        linear(
+          0 0%,
+          0.22 2.1%,
+          0.86 6.5%,
+          1.11 8.6%,
+          1.3 10.7%,
+          1.35 11.8%,
+          1.37 12.9%,
+          1.37 13.7%,
+          1.36 14.5%,
+          1.32 16.2%,
+          1.03 21.8%,
+          0.94 24%,
+          0.89 25.9%,
+          0.88 26.85%,
+          0.87 27.8%,
+          0.87 29.25%,
+          0.88 30.7%,
+          0.91 32.4%,
+          0.98 36.4%,
+          1.01 38.3%,
+          1.04 40.5%,
+          1.05 42.7%,
+          1.05 44.1%,
+          1.04 45.7%,
+          1 53.3%,
+          0.99 55.4%,
+          0.98 57.5%,
+          0.99 60.7%,
+          1 68.1%,
+          1.01 72.2%,
+          1 86.7%,
+          1 100%
+        );
+    }
+
+    /* .tracklist_button_clicked_styles style must come after .tracklist_button because of we are adding .tracklist_button_clicked_styles class to button element, when button is pressed. When .tracklist_button_clicked_styles is added, we are not removing .tracklist_button so a battle will happen in these 2 classes, and when battle is happening we want that .tracklist_button_clicked_styles class should win all css rules and apply that style  */
+    .tracklist_button_clicked_styles {
+      /* The way we have set our javascript we expect that this style rule will introduce some breakage when this button is viewed in mobile or less than 800, but it is not happening why? Because even though our javascript is applying this class to button element this class css properties will only be applied to the element when our view port is more than 800 */
+      transform: rotate(0deg);
+      margin-top: 0;
+      position: sticky;
+      top: 0;
+      background-color: var(--cyan);
+      color: var(--black);
+      font-weight: bold;
+    }
+
+    .tracklist_button_clicked_styles:hover {
+      background-color: var(--lime);
+    }
+
+    /* ////// EXTRA STYLES FOR TABLE WHEN IN >=800px LAYOUT ////// */
+    .track-list-section table {
+      margin: -4rem 1rem 0.5rem;
+    }
+
+    .track-list-section table td:last-of-type {
+      /* td:last-of-type choose last td element among sibling (element having same parent) */
+      padding-right: 2rem;
+    }
+
+    /* ////// STYLING SCROLL BAR FOR TRACLIST SECTION ////// */
+    .track-list-section::-webkit-scrollbar {
+      width: 5px;
+    }
+    .track-list-section::-webkit-scrollbar-track {
+      background-color: var(--cyan);
+    }
+    .track-list-section::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+    }
+
+    /* ////// SCROLLBAR STYLES FOR FIREFOX SECTION ////// */
+    /* Turns out after defining scrollbar setting inside HTML selector, previous styles are over written, it maybe now
+    Chrome to started supporting below css properties for scrollbar layout. Hence moving below declaration to HTML declaration above  */
+    /* html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--cyan) var(--black);
+    } */
+  }
+}
+
+@layer reviews {
+  .reviews {
+    /* added min-width, to avoid breaking of specified layout after 440px */
+    min-width: 440px;
+    /* 1250px because at this minimum pixel size, we can align our all bolts in single row acoording to desktop layout design
+    */
+    max-width: 1250px;
+    margin: 4rem auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .imggroup {
+    margin-top: 2rem;
+  }
+
+  .star {
+    width: 18px;
+  }
+
+  .featured-img {
+    display: none;
+  }
+
+  /* ///// BOLT STYLE IN REVIEW SECTION ///// */
+  .bolt {
+    height: 56px;
+    width: 55px;
+  }
+
+  .hide-bolt-mobile {
+    display: none;
+  }
+
+  .hide-bolt-tab {
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .reviews {
+      gap: 2rem;
+    }
+
+    .featured-img {
+      display: inline-block;
+    }
+
+    .featured-img img {
+      border: 1px solid var(--white);
+    }
+
+    .hide-bolt-mobile {
+      display: unset;
+    }
+
+    .hide-bolt-tablet {
+      display: none;
+    }
+  }
+  @media (min-width: 1250px) {
+    /* this media query is written specific for bolts. so be carefully when putting other elements in this media query. */
+    .hide-bolt-tablet {
+      display: unset;
+    }
+  }
+}
+
+@layer album {
+  .big-bolt {
+    width: 155px;
+    height: 155px;
+    margin: 2rem auto;
+    /* border: 1px solid red; */
+  }
+  .album {
+    border: 2px solid var(--cyan);
+    /* max-width: 500px; */
+    margin: 3rem auto 1rem auto;
+    padding: 1rem;
+    text-align: center;
+    /* relative keyword is used, to create double border look below for double border code */
+    position: relative;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .magline {
+    background-image: url("../../assets/fem-blindfold-1200.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+  }
+  .album h1 {
+    color: var(--lime);
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: var(--h4);
+    margin: 1rem 0;
+  }
+  .album h2 {
+    margin: 0;
+    font-size: var(--h6);
+    font-family: var(--cursive);
+  }
+
+  /* ///// CREATING INNER DOUBLE BORDER FOR ALBUM SECTION ///// */
+  .album::before,
+  .album::after,
+  .album > :first-child::before,
+  .album > :first-child::after {
+    content: "";
+    position: absolute;
+    /* border: 2px solid var(--cyan); */
+    width: 40px;
+    height: 40px;
+    margin: 0.5rem;
+  }
+  .album::before {
+    /* this element placed on top left   */
+    top: 0;
+    left: 0;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+  }
+  .album::after {
+    /* this element placed on top right */
+    top: 0;
+    right: 0;
+    border-top: 2px solid var(--cyan);
+    border-right: 2px solid var(--cyan);
+  }
+  .album > :first-child::before {
+    /* this element placed on left bottom */
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+  }
+  .album > :first-child::after {
+    /* this element placed on right bottom */
+    bottom: 0;
+    right: 0;
+    border-bottom: 2px solid var(--cyan);
+    border-right: 2px solid var(--cyan);
+  }
+
+  @media (min-width: 800px) {
+    .magline {
+      height: 350px;
+    }
+  }
+}
+
+@layer diamonds {
+  @layer base-diamonds-style {
+    .diamonds li:first-child {
+      background: url("../../assets/fem-purple-arms.jpg");
+      background-size: contain;
+      background-image: no-repeat;
+    }
+    .diamonds li:nth-child(2) {
+      background-image: url("../../assets/fem-fireworks.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(3) {
+      background-image: url("../../assets/fem-blue-arms.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(4) {
+      background-image: url("../../assets/fem-camera.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(5) {
+      background-image: url("../../assets/fem-stripe.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(6) {
+      background-image: url("../../assets/fem-purple-hands.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(7) {
+      background-image: url("../../assets/fem-firework.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(8) {
+      background-image: url("../../assets/fem-stadium.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(9) {
+      background-image: url("../../assets/fem-flag.jpg");
+      background-size: contain;
+    }
+    .diamonds li:nth-child(10) {
+      background-image: url("../../assets/fem-women.jpg");
+      background-size: contain;
+    }
+  }
+
+  .diamond-container {
+    --sq: 200px;
+    --sq-gap: 1rem;
+    --max-width: 325px;
+
+    border: 2px solid var(--cyan);
+    margin: 2rem auto;
+    max-width: var(--max-width);
+  }
+
+  .diamonds li {
+    list-style: none;
+    width: var(--sq);
+    height: var(--sq);
+    margin-bottom: var(--sq-gap);
+  }
+
+  .diamonds li:nth-child(odd) {
+    transform: rotate(4deg);
+  }
+  .diamonds li:nth-child(even) {
+    transform: rotate(-2deg);
+  }
+
+  @media (min-width: 324px) {
+    .diamond-container {
+      --sq: 150px;
+      --sq-gap: 3px;
+      --max-width: 325px;
+    }
+    /* turn off image rotation */
+    .diamonds li:nth-child(odd) {
+      transform: rotate(0deg);
+    }
+    .diamonds li:nth-child(even) {
+      transform: rotate(0deg);
+    }
+    /* start with the diamonds in a basic flexbox layout */
+    .diamonds {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      gap: var(--sq-gap);
+      padding-left: calc(0.5 * var(--sq));
+      padding-top: calc(0.5 * var(--sq));
+    }
+    /* display as diamonds and make them overlap a bit */
+    .diamonds li {
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      margin-left: calc(-0.5 * var(--sq));
+      margin-bottom: 0;
+    }
+
+    /* For every 3rd diamond, starting with the second, pull it up in space from its current location */
+    .diamonds li:nth-child(3n + 2) {
+      margin-top: calc((-0.5 * var(--sq)) - (0.5 * var(--sq-gap)));
+    }
+
+    /* ////// FIXING LAST DIAMOND ////// */
+    .diamonds li:last-child {
+      margin-top: calc((-0.5 * var(--sq)) - (0.5 * var(--sq-gap)));
+    }
+
+    /* ////// MAIN LOGIC FOR DIAMOND SECTION IS DONE NOW WE JUST NEED TO ADD MEDIA QUERY ////// */
+    @media (min-width: 440px) {
+      .diamond-container {
+        --sq: 200px;
+        --sq-gap: 4px;
+        --max-width: 440px;
+      }
+    }
+
+    @media (min-width: 800px) {
+      .diamond-container {
+        --sq: 250px;
+        --sq-gap: 6px;
+        --max-width: 550px;
+      }
+    }
+  }
+}
+
+@layer footer {
+  footer {
+    text-align: center;
+  }
+  footer ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 1rem 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  footer svg {
+    fill: var(--lime);
+  }
+  footer svg:hover {
+    fill: var(--cyan);
+  }
+}
+
+/* ////// FINAL DESKTOP 1440P DESIGN ////// */
+@media (min-width: 1440px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+
+  .left {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  .right {
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+
+  #top {
+    padding: 0;
+    width: 600px;
+  }
+}
